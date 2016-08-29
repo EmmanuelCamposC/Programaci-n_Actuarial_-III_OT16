@@ -1,0 +1,85 @@
+---
+title: "Kardex"
+author: "Emmanuel Campos C."
+date: "29 de agosto de 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+##201421248
+
+# Primer semestre 
+
+````
+Programación Acturial I            06
+
+Intr. a la Profesión Actuarial     07
+
+DHPC                               09
+
+Conceptos Cálculo                  07
+
+Matemáticas Basicas                08
+
+Problemas de Matemáticas Basicas   08
+````
+**Promedio                          7.5**
+
+
+# Segundo semestre 
+
+````
+Programación Acturial II           05
+
+Teoria del Interés I               07
+
+Teoria de ecuaciones               05
+
+Cálculo I                          09
+
+Geometria Analitica                09
+
+Microeconomia                      09
+````
+**Promedio                          8.5**
+
+
+# Tercer semestre 
+
+````
+Teoria del Interés II              10
+
+Teoria de ecuaciones               09
+
+Cálculo II                         08
+
+Lengua Extranjera                  10
+````
+**Promedio                          9.2**
+
+
+
+# Cuarto semestre 
+
+````
+Programación Acturial II           08
+
+Cálculo III                        10
+
+Sistema Financiero Mexicano        10
+
+Ecuaciones Diferenciales           08
+
+Macroeconomia                      09
+
+Álgebra Lineal                     09
+````
+**Promedio                           09**
+
+
+
+
+
+**Nota:** Me reprobaron, yo no reprobé  
