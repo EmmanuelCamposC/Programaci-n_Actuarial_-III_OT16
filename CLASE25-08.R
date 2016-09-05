@@ -155,7 +155,25 @@ m
 getwd()
 setwd("~/GitHub/Programaci-n_Actuarial_-III_OT16")
 data <- read.csv("Datos_S&P.csv")
-data <- read.table("Datos_S&P.csv",T,",")
+data <- read.table("Datos_S&P.csv",T,",", nrows = 100)
+clases <-sapply(data, class)
+data <- read.table("Datos_S&P.csv",T,",", colClasses = clases) #WTF
 data
 
+#Uso de dput y dget
+y <- data.frame(a =1 , b ="a")
+dput(y)
+dput(y, file = "y.R")
+nueva.y <- dget("y.R")
+y
+nueva.y
 
+x <- "Programación Acturial III"
+y <- data.frame(a=1,b="a")
+dump(c("x","y"), file = "data.R")
+rm(x,y)
+x
+source("data.R")
+dput(head(airquality), file = "HEAD_Airquality.R")
+guardo <- dget("HEAD_Airquality.R")
+guardo
