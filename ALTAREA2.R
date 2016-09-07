@@ -5,17 +5,34 @@ da
 s <-`class<-`(da,10)
 s 
 
-class(da[1,2])
-class(da[1,3])
-class(da[1,4])
-class(da[1,5])
-class(da[1,6])
-class(da[1,7])
-class(da[2,2])
-class(da[2,3])
-class(da[2,4])
-class(da[2,5])
-class(da[2,6])
-class(da[2,7])
+#Creamos un vector 05/09/2016
+x <- c("a","b","c","c","d","e")
+x
+#Extramos []
+x[1]
+x[2]
+#también podemos con secuencias de elementos
+x[1:4]
+#es posible extraer elmentos que cumplen condiciones
+x[x>"b"]
+#de Manera equivalente
+u <- x=="c"
+u
+x[u]
+
+#Creamos una lista
+x <- list(foo = 1:4, bar = 0.6)
+#extraemos el primer elemento de la lista 
+# este elmento es una lista  que contiene una secuencia 
+x[1]
+#extramos nuevamente el primer elemento de la lista,
+#ahora el elemtento es la lista en si 
+x[[1]]
+#Extraemos un elemento por nombre 
+x$bar
+x[["bar"]]
+x["bar"]
+
+
 
 

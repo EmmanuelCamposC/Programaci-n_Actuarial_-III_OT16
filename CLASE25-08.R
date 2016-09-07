@@ -174,6 +174,44 @@ dump(c("x","y"), file = "data.R")
 rm(x,y)
 x
 source("data.R")
-dput(head(airquality), file = "HEAD_Airquality.R")
+x <- airquality
+x
+dput(x, file = "HEAD_Airquality.R")
 guardo <- dget("HEAD_Airquality.R")
 guardo
+
+con <- url("http://www.fcfm.buap.mx/","r")
+x <- readLines(con,7)
+x
+
+#Creamos un vector
+x <- c("a","b","c","c","d","e")
+x
+#Extramos []
+x[1]
+x[2]
+#también podemos con secuencias de elementos
+x[1:4]
+#es posible extraer elmentos que cumplen condiciones
+x[x>"b"]
+#de Manera equivalente
+u <- x=="c"
+u
+x[u]
+
+#Creamos una lista
+x <- list(foo = 1:4, bar = 0.6)
+#extraemos el primer elemento de la lista 
+# este elmento es una lista  que contiene una secuencia 
+x[1]
+#extramos nuevamente el primer elemento de la lista,
+#ahora el elemtento es la lista en si 
+x[[1]]
+#Extraemos un elemento por nombre 
+x$bar
+x[["bar"]]
+x["bar"]
+
+
+
+
