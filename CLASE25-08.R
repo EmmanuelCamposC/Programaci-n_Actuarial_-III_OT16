@@ -185,7 +185,7 @@ x <- readLines(con,7)
 x
 
 #Creamos un vector
-x <- c("a","b","c","c","d","e")
+x <- c("a","b","a","c","d","e")
 x
 #Extramos []
 x[1]
@@ -207,10 +207,125 @@ x[1]
 #extramos nuevamente el primer elemento de la lista,
 #ahora el elemtento es la lista en si 
 x[[1]]
-#Extraemos un elemento por nombre 
+#Extraemos un elemento por nombre, lo extrae como lo que es y no como parte de la lista
 x$bar
 x[["bar"]]
 x["bar"]
+x$foo[2]
+
+#Creamos una lista de 3 elementos
+x <- list(foo = 1:4, bar = 0.6, baz = "Hola")
+#Extraemos el primer y tercer elemento de la lista 
+x[c(1,3)]
+x[[c(1,3)]]
+name <- "foo"
+x[[name]]
+x$name
+x$foo
+
+# Se puede extraer elementos de los elementos extraídos 
+x <- list( a = list(10,12,14), b = list(3.14,2.81))
+x[[c(1,3)]]
+x[[1]][[3]]
+
+x <- matrix(1:6, 2,3)
+x
+x[1,2]
+x[2,1]
+x[1,]
+x[,2]
+#El resultado es un vector 
+x[1,2]
+#con drop  = F, se matiene la dimensión y
+# el resultado será una matriz.
+x[1,2, drop = F]
+#si dejamos solamente el espacio, el resultado será un vector 
+x[1,]
+#Si usamos drop = F, el resultado será una matriz.
+x[1, ,drop = F]
+
+#Curioso
+x <- list(asd = 1:5)
+x$a
+X[["asd"]]
+x[["a", exact = F]]
+
+#VAlores Faltantes 
+airquality[1:6,]
+completos <- complete.cases(airquality)
+completos
+airquality[completos,][1:6,]
+airquality[1:6,][completos,]
+
+#Operaciones vectores  
+x <- 1:4 ; y <- 9:6
+x + y
+x > 2
+x >= 2
+x == 8
+x * y
+x / y
+
+#Operaciones matriz 
+x <- matrix(1:4,2,2) ; y <- matrix(rep(10,4),2,2)
+x * y # multiplica los elementos
+x / y 
+x %*% y # %*% multiplica las matrices 
+
+#Estructuras control
+y <-if (x>3){
+    10 #instruciones
+} else {
+    0 #otras
+}
+
+for (i in 1:10){print(i)}
+
+x <- c("a","b","c","d")
+for ( i in 1:4){print(x[i])}
+for ( i in seq_along(x)){print(x[i])}
+for ( letra in x){print(letra)}
+
+x <- matrix(1:6, 2,3)
+x
+for (i in seq_len(nrow(x)) ){
+  for (j in seq_len(ncol(x))) {
+    print(x[i,j])
+  }
+}
+
+#while
+z <- 5
+while (z>= 3 &&  z<= 10) {
+  print(z)
+  moneda <- rbinom(1,1,0.5)# variable binomial,
+  # cuantos datos, numero de intentos , probabilidad de exitos  
+  if (moneda==1){#caminata aleatoria
+    z <- c(z+1)
+  } else { 
+    z <- (z-1)
+    }
+}
+for (i in 100) {
+  
+
+z <- 5
+d <- vector("numeric")
+while (z>= 3 &&  z<= 10) {
+  print(z)
+  d <- c(d,z)
+  moneda <- rbinom(1,1,0.5)# variable binomial,
+  # cuantos datos, numero de intentos , probabilidad de exitos  
+  if (moneda==1){#caminata aleatoria
+    z <- z+0.5
+  } else { 
+    z <- z-0.5
+  }
+ }
+}
+#d
+#plot(d, type = "l")
+
 
 
 

@@ -12,7 +12,7 @@ x
 x[1]
 x[2]
 #también podemos con secuencias de elementos
-x[1:4]
+x[1:4]   
 #es posible extraer elmentos que cumplen condiciones
 x[x>"b"]
 #de Manera equivalente
