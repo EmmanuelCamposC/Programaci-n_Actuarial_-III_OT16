@@ -306,7 +306,7 @@ while (z>= 3 &&  z<= 10) {
     z <- (z-1)
     }
 }
-for (i in 100) {
+for (i in 1:100) {
   
 
 z <- 5
@@ -325,6 +325,36 @@ while (z>= 3 &&  z<= 10) {
 }
 #d
 #plot(d, type = "l")
+
+#Creación de funciones
+suma2 <- function(x,y){
+  x + y 
+}
+
+mayor10 <-function(x){
+  x[x>10]
+}
+
+mayorque <- function(x,n){
+  x[x>n]
+}
+
+promedioCol <- function(x, quitar.NA = T){
+  nc <-ncol(x)
+  medias <- vector("numeric",nc)
+  for (i in 1:nc) {
+    medias[i] <- mean(x[,i], na.rm = quitar.NA)
+  }
+  medias
+}
+
+#Evaluación perezosa 
+f <- function(a,b){
+  print(a)
+  #print(b)
+}
+
+f(2)
 
 
 
