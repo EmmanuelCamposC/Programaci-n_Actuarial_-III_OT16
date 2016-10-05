@@ -6,7 +6,7 @@ pcol <- function(x,m, quitar.NA = T){
 
 directorio <-  setwd("~/GitHub/Programaci-n_Actuarial_-III_OT16/specdata")
 ar <- read.csv("001.csv")
-
+getwd()
 mediacontaminante <- function(directorio,y,id=1:332){
   j <- 0
   b <- 0
@@ -31,7 +31,7 @@ mediacontaminante <- function(directorio,y,id=1:332){
   prom <- b/cta
   prom
 }
-mediacontaminante(directorio,"sulfate",1:10)
+mediacontaminante(directorio,"sulfate",1:332)
 ar <- read.csv("001.csv")
 comp <- complete.cases(ar)
 full <- ar[comp, 2:3]
@@ -72,10 +72,13 @@ for (i in 1:2) {
   caso[i] <-nrow(completos)
   
 }
-
-
+mediacontaminante(directorio,"nitrate",1:10)
+directorio <-  setwd("~/GitHub/Programaci-n_Actuarial_-III_OT16/specdata")
+ar <- read.csv("001.csv")
+getwd()
 completos <- function(directorio, id=1:332){
   setwd(directorio)
+  getwd()
   llenado <- vector("numeric")
   for(k in id) {
     if (k<10) {
@@ -95,8 +98,8 @@ completos <- function(directorio, id=1:332){
   daframe <- data.frame(id=id,nobs=llenado)
   daframe
 }
-completos(directorio,30:25)
-
+completos(directorio,1:5)
+getwd()
 
 corr <- function(directorio, horizonte = 0){
   setwd(directorio)
@@ -149,94 +152,4 @@ suma2(full[,2],full[,1])
 sum(suma2(full[,2],full[,1]))
 sum(full[,1])
 sum(full[,2])
-
-
-mediacontaminante <- function(directorio, contaminante, id= 1:332){
-  setwd(directorio)
-  suma2 <- 0
-  nf2 <- 0
-  promedio <- 0
-  j <- 0
-  if (contaminante== "sulfate") {
-    j= 2
-  } else if(contaminante == "nitrate"){
-    j=3
-  } else {
-    
-  }
-  
-  for(i in id) {
-    #lectura de datos
-    if (i<10) {
-      tabla <- read.csv(paste("00", i, ".csv", sep=""))
-    }else if(i>=10 && i<100 ) {
-      tabla<-read.csv(paste("0", i,".csv", sep=""))
-    }else {
-      tabla<-read.csv(paste(i,".csv",sep=""))
-    }
-    
-    #Datos sin Na o NaN
-    columna<-tabla[j]
-    buenos <- complete.cases(columna)
-    nuevo <- tabla[buenos, ]
-    
-    
-    #cuenta el no. de filas
-    nf <- nrow(nuevo)
-    nf2 <- nf2+nf
-    
-    #suma los datos de cada tabla
-    suma <- sum(nuevo[,j])
-    suma2 <- suma2+suma
-  }
-  promedio <- suma2/nf2
-  print(promedio)
-}
-mediacontaminante(directorio,"sulfate",1:10)
-
-
-+columna <- 0
-+tabla <- 0
-+mediocontaminante <- function(directorio,contaminante,id = 1:332){
-  +
-    +  if (contaminante=="sulfate"){
-      +    x = 2
-      +  }else if (contaminante == "nitrate" ) {
-        +    x = 3
-        +  }
-  +  suma<-0
-  +  promedio1<-0
-  +  suma2 <-2
-  +  n<-0
-  +  for (i in id) {
-    +    if (0<i && i<10){
-      +      tabla <- read.csv(paste("00",i,".csv",sep=""))
-      +    }else if (i>9 && i<100){
-        +      tabla <- read.csv(paste("0",i,".csv",sep=""))
-        +    }else {
-          +      tabla <- read.csv(paste(i,".csv",sep=""))
-          +    }
-    +  
-      +    columnas <- tabla[x]
-      +    columnabien <- na.omit(columnas)
-      +    numfilas <- nrow(columnabien)
-      +
-        +
-        +    for (j in 1:numfilas){
-          +      suma <- suma + columnabien[j,]
-          +      
-            +    }
-      +    suma2 <- suma/numfilas
-      +        n <- n+1
-      +    promedio1<- promedio1+suma2
-      +    
-        +    suma2 <- 0
-        +    suma <- 0 
-        +  }
-    promedio2 <- promedio1/n
-    "este es tu promedio"
-    print(promedio2)
-  
-    }
-
 
