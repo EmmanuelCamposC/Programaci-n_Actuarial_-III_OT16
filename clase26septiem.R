@@ -123,13 +123,137 @@ as.POSIXct(date())
   #cuando hay error
   #con selection marcas donde quieres verificar cuando te manda a un error
   
+  #swirl es un estilo de tutorial
   
+  #05/10/16
+  #str, nos da informacion ultil, un resumen de programador
+  #nos dice su tamaño, clase, los primeros elementos y que es
+  str(str)
+  str(lm)
+  str(ls)
+  x <- rnorm(100)
+   str(x)
+   summary(x)
+  f <- gl(40,10)
+   str(f)
+   summary(f)
   
+   str(airquality)
+   
+  m <- matrix(rnorm(100),10,10)
+   m
+   str(m)
   
+  s <- split(airquality,airquality$Month) 
+   s
+   str(s)
+   
+  #generacion de alatorios
+   #dnorm te dice la probabilidad de que sea exactamente un número 
+   # d desidad
+   # r genera una variable aleatoria 
+   # p 
+   
+  x <- rnorm(10)
+   x
   
+  y <- rnorm(10,50,5)
+   y
+   
+  summary(x) 
+  summary(y) 
   
+  set.seed(1)
+  rnorm(5)
+  set.seed(2)
+  rnorm(5)
   
+  normal1 <- rnorm(10000)
+  normal2 <- rnorm(10000,10,5)
+  hist(normal1)
+  summary(normal1)
+  hist(normal2)
+  summary(normal2)
   
+  rpois(10,1)
+  poisson1 <- rpois(10000,1)  
+  poisson2 <- rpois(10000,10)
+  hist(poisson1)
+  hist(poisson2)
   
+  ppois(2,2)
+  ppois(4,2)
+  ppois(6,2)
   
+  hist(rpois(10000,2))
+  rpois(10000,2) == 0
+  length(m)
+  for (i in 0:11) {
+      print(dpois(i,2))
+  }
+  #length(rpois(10000,2)[rpois(10000,2)==1])/10000
+  #as.numeric(as.integer(probs *10000))/100
   
+  hist(runif(10000,10,20))
+  
+  set.seed(20)
+  x <- rnorm(100)
+  e <- rnorm(100, 0, 2)
+  y <- 0.5 + 2*x + e 
+  plot(x,y)
+  
+  z <- 0.5 +2* x
+   plot(x,z)
+   summary(y)
+  
+   #rbinom
+  set.seed(10)
+   x <- rbinom(100,1,0.5) #1 intentos, 0.5 la probabilidad de exito con un intento
+   #y digamos son 100 intentos 
+   e <- rnorm(100,0,1) #original era 2-1
+   y <- 0.5 + 6*x + e # 6-2
+   summary(y)
+   plot(x,y, main = "Modelo Lineal", col="Blue")
+   
+  set.seed(1)
+   x <- rnorm(100)
+   log.mu <- 0.5 + 0.3*x
+   y <- rpois(100,exp(log.mu))
+   summary(y)
+   plot(x,y, main = "Modelo Poisson", col="Forestgreen")
+   
+   #10 de octubre
+   #Muestreo
+   set.seed(1)
+   sample(1:10,4)
+   sample(1:10,4)
+   sample(letters,5)
+   sample(1:10)
+   sample(1:10)
+   sample(1:10, replace = T)#10^10
+   
+   #Perfilaje
+   #user time el tiempo que ocupa el cpu
+   #elapsed time el tiempo que yo espere 
+ system.time(readLines("http://www.fcfm.buap.mx"))
+ 
+ hilert <- function(n){
+     i <- 1:n
+     1/outer(i-1,i,"+")
+ }  
+ x <-hilert(1000)  
+ system.time( x <-hilert(1000))
+ system.time(svd(x))
+ #RProf() me dice cada .02 segundos en que función trabaja
+ #No usar system y Rprof porque se puede ciclar...
+ 
+ 
+   
+   
+   
+   
+   
+   
+   
+   
+   
