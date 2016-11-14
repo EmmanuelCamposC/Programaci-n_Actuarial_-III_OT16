@@ -100,8 +100,9 @@
         #priemero instala mysql
         install.packages("RMySQL")
         library(RMySQL)
-        ucscDb <- dbConnect(MySQl(), user = "genome", host="genome-mysql.cse.ucsc.edu")
-        result <- dbGetQuery(ucscDb, "show databases;",) ; dbDisconnect(ucscDb)
+        ucscDb <- dbConnect(MySQL(), user="genome",
+                            host="genome-mysql.cse.ucsc.edu")
+        result <-dbGetQuery(ucscDb,"show databases;"); dbDisconnect(ucscDb);
         result
         
         #10 noviembre    
@@ -122,7 +123,11 @@
         
  
  
-    
+    library(RMySQL)
+    ucscDb <- dbConnect(MySQL(), user="genome",
+                        host="genome-mysql.cse.ucsc.edu")
+    result <-dbGetQuery(ucscDb,"show databases;"); dbDisconnect(ucscDb);
+    result
     
     
     
