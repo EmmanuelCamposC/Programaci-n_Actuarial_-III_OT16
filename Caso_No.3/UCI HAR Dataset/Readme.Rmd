@@ -1,0 +1,24 @@
+---
+title: ""
+author: ""
+date: ""
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Readme
+
+###El programa hará lo siguiente:
+
+-Primero une los datos de los archivos test con los de los archivos training, para crear un solo conjunto de datos.
+
+-Después extrae las medidas de media y desviación estándar de cada medición.
+
+-Luego usa nombres de actividad correspondientes para describir los nombres de las actividades en la base de datos.
+
+-Coloca los nombres apropiados en la base de datos con etiquetas de variables que las describan.
+
+-Se crea una segunda base de datos con el promedio de cada variable para cada actividad y cada sujeto.
