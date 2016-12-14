@@ -5,58 +5,55 @@
     setwd("~/GitHub/Programaci-n_Actuarial_-III_OT16/Caso_No.3/UCI HAR Dataset")
     
     #leemos los archivs y unimos
-    subject_test <- read.table("./test/subject_test.txt", col.names=c("Subject"))
-    subject_train <- read.table("./train/subject_train.txt", col.names=c("Subject"))
+    STs <- read.table("./test/subject_test.txt", col.names=c("Subject"))
+    STn <- read.table("./train/subject_train.txt", col.names=c("Subject"))
     
-    features_test <- read.table("./test/X_test.txt")
-    features_train <- read.table("./train/X_train.txt")
+    Fstest <- read.table("./test/X_test.txt")
+    Fstrain <- read.table("./train/X_train.txt")
     
-    features_test <- read.table("./test/X_test.txt")
-    features_train <- read.table("./train/X_train.txt")
+    Atest <- read.table("./test/Y_test.txt")
+    Atrain<- read.table("./train/Y_train.txt")
     
-    activities_test <- read.table("./test/Y_test.txt")
-    activities_train <- read.table("./train/Y_train.txt")
+    Flist<- read.table("features.txt", col.names=c("index", "feature_labels"))
+    Alabels<-read.table("activity_labels.txt",sep=" ",col.names=c("activityLabel","Activity"))
+
     
-    feature_list <- read.table("features.txt", col.names=c("index", "feature_labels"))
-    activity_labels<-read.table("activity_labels.txt",sep=" ",col.names=c("activityLabel","Activity"))
     
     #Combinamos los datos de Test con los de Train
-    subject_all <- rbind(subject_train, subject_test)
-    
-    features_data <- rbind(features_test, features_train)
-    
-    activities_all <- rbind(activities_test, activities_train)
-    colnames(activities_all) <- "activityLabel"
-    activities_all<-join(activities_all,activity_labels,by="activityLabel",type="left")
+    subjeall <- rbind(STn, STs)
+    featuresdata <- rbind(Fstest, Fstrain)
+    activitiesall <- rbind(Atest, Atrain)
+    colnames(activitiesall) <- "activityLabel"
+    activitiesall<-join(activitiesall,Alabels,by="activityLabel",type="left")
     
     #Extraemos Los que datos que tienen las palabras mean y , para ello creamos
     #el vector que contenga cada uno de los nombres de la antividad, entonces
     #extramos los datos de la columna feature_labels
-    feature_labels <- feature_list$feature_labels
+    featurelabels <- Flist$feature_labels
     
-    features_subset <- grepl('mean\\(\\)|std\\(\\)',feature_labels)
-    head(features_subset,2)
+    featuressubset <- grepl('mean\\(\\)|std\\(\\)',featurelabels)
+    head(featuressubset,2)
 
     
     #Colocamos etiquetas
-    colnames(features_data) <- feature_labels
-    head(features_data,2)
+    colnames(featuresdata) <- featurelabels
+    head(featuresdata,2)
     
     
     #Creamos el vector que contiene cada uno de los nombres que tienen mean
     #o std, para luego extraerlos.
-    feature_list <- as.character(feature_labels[features_subset])
-    head(feature_list,2)
+    Flist <- as.character(featurelabels[featuressubset])
+    head(Flist,2)
     
-    features_data <- features_data[,features_subset]
+    featuresdata <- featuresdata[,featuressubset]
     head(features_data,2)
     
     #Combinamos cada base para tener una sola y remodelamos
-    all_df <- cbind(features_data, activities_all, subject_all)
-    head(all_df,2)
+    alldf <- cbind(featuresdata, activitiesall, subjeall)
+    head(alldf,2)
     
     #une las data remoldelados mejorados
-    tdf <- melt(all_df, id=c("Subject", "Activity"), measure.vars=feature_list)
+    tdf <- melt(alldf, id=c("Subject", "Activity"), measure.vars=Flist)
     head(tdf,2)
     
     tdf <- dcast(tdf, Activity + Subject ~ variable, mean)
