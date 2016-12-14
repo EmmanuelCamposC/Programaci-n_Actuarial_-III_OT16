@@ -62,11 +62,12 @@
     tdf <- tdf[order(tdf$Subject, tdf$Activity),]
     head(tdf,2)
     
+    
     rr <- nrow(tdf)
     rownames(tdf) <- 1:rr
     tdf <- tdf[,c(2,1,3:68)]
     head(tdf,2)
     #creamos la nueva base 
     write.table(tdf,file="New_database.txt") 
-    
-    
+    ee <- read.table("New_database.txt")
+    summary(ee)
